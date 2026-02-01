@@ -1,6 +1,12 @@
-FROM node:14
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
+FROM python:3.10-slim
+ENV PORT 8000
+EXPOSE 8000
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-CMD ["npm", "start"]
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]

@@ -1,0 +1,13 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: my-app-container
+  labels:
+    app.kubernetes.io/name: my-app-container
+    app.kubernetes.io/part-of: my-app-container-project
+    kubernetes.azure.com/generator: devhub
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: my-app-container

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-container
+  namespace: namespace-workflow-1769946356751
+  labels:
+    app.kubernetes.io/name: my-app-container
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: my-app-container
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
